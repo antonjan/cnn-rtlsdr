@@ -1,3 +1,5 @@
+# Forked from randaller/cnn-rtlsdr
+
 # CNN-rtlsdr
 Deep learning signal classification using rtl-sdr dongle.
 

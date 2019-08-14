@@ -15,6 +15,7 @@ or download directly: https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-
 If you do not have modern NVIDIA graphics card, to install CPU version, just remove the following line in requirements.txt:
 ```
 tensorflow-gpu==1.4.0
+pip install --upgrade tensorflow==1.3.0.
 ```
 
 Run anaconda prompt, change dir to C:\rtlsdr, then run:

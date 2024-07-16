@@ -1,11 +1,12 @@
 import time
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import numpy as np
 import os
 import sys, argparse
 from rtlsdr import RtlSdr
 import scipy.signal as signal
-
+tf.disable_eager_execution()
 
 def read_samples(sdr, freq):
     f_offset = 250000  # shifted tune to avoid DC
@@ -42,8 +43,11 @@ sdr.gain = args.gain
 classes = [d for d in os.listdir('training_data') if os.path.isdir(os.path.join('training_data', d))]
 num_classes = len(classes)
 
-sess = tf.Session()
-saver = tf.train.import_meta_graph('rtlsdr-model.meta')
+#sess = tf.Session() #v1 tf
+sess = tf.compat.v1.Session() #v2 back words compatible
+#saver = tf.train.import_meta_graph('rtlsdr-model.meta')
+saver = tf.compat.v1.train.import_meta_graph('rtlsdr-model.meta')
+
 saver.restore(sess, tf.train.latest_checkpoint('./'))
 
 graph = tf.get_default_graph()
